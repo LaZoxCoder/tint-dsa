@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* front = NULL;
+struct Node* rear = NULL;
+
+int isEmpty() {
+    return (front == NULL);
+}
+
+void enqueue(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    if (newNode == NULL) {
+        printf("Memory allocation failed. Enqueue operation failed.\n");
+        return;
+    }
+    newNode->data = data;
+    newNode->next = NULL;
+    if (isEmpty()) {
+        front = rear = newNode;
+    } else {
+        rear->next = newNode;
+        rear = newNode;
+    }
+}
+
+int dequeue() {
+    int data;
+    struct Node* temp;
+    if (isEmpty()) {
+        printf("Queue is empty. Dequeue operation failed.\n");
+        return -1;
+    }
+    temp = front;
+    data = temp->data;
+    front = front->next;
+    free(temp);
+    return data;
+}
+
+int main() {
+    return 0;
+}
