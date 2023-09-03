@@ -30,8 +30,7 @@ int dequeue() {
     int data;
     if (isEmpty()) {
         printf("Queue is empty. Dequeue operation failed.\n");
-        return -1; // Assuming -1 represents an error value.
-    }
+        return -1;
     data = queue[front];
     if (front == rear) {
         front = rear = -1;
@@ -42,6 +41,5 @@ int dequeue() {
 }
 
 int main() {
-    // Queue operations can be tested here.
     return 0;
 }
